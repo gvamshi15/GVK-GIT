@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping.dtd">
+<!-- Generated 5 Aug, 2014 11:48:00 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.ram.sai.model.Skills" table="SKILLS">
+        <id name="skillId" type="int">
+            <column name="SKILLID" />
+            <generator class="assigned" />
+        </id>
+        <property name="skill" type="java.lang.String">
+            <column name="SKILL" />
+        </property>
+        <set name="employees" table="EMPSKILLS" cascade="all">
+            <key>
+                <column name="SKILLID" />
+            </key>
+            <many-to-many class="com.ram.sai.model.Employee" column="EMPID"/>
+        </set>
+    </class>
+</hibernate-mapping>

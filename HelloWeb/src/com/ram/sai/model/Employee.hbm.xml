@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping.dtd">
+<!-- Generated 5 Aug, 2014 11:48:00 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.ram.sai.model.Employee" table="EMPLOYEE">
+        <id name="empId" type="java.lang.Integer">
+            <column name="EMPID" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <!-- <property name="vers" type="java.lang.Integer">
+            <column name="VERS" />
+        </property> -->
+        <property name="age" type="java.lang.Integer">
+            <column name="AGE" />
+        </property>
+        <property name="salary" type="java.lang.Double">
+            <column name="SALARY" />
+        </property>
+        <property name="designation" type="java.lang.String">
+            <column name="DESIGNATION" />
+        </property>
+        <property name="department" type="java.lang.String">
+            <column name="DEPARTMENT" />
+        </property>
+        <!-- <property name="dol" type="java.lang.String">
+            <column name="DOL" />
+        </property>
+        <property name="doj" type="java.lang.String">
+            <column name="DOJ" />
+        </property>
+        <property name="receiveNewsletter" type="boolean">
+            <column name="RECEIVENEWSLETTER" />
+        </property> -->
+        <property name="favouriteWord" type="java.lang.String">
+            <column name="FAVOURITEWORD" />
+        </property>
+        <property name="sex" type="java.lang.String">
+            <column name="SEX" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="PASSWORD" />
+        </property>
+        <property name="house" type="java.lang.String">
+            <column name="HOUSE" />
+        </property>
+        <property name="notes" type="java.lang.String">
+            <column name="NOTES" />
+        </property>
+        <!-- <property name="file_1" type="java.io.File">
+            <column name="FILE_1" />
+        </property>
+        <property name="file_2" type="org.springframework.web.multipart.MultipartFile">
+            <column name="FILE_2" />
+        </property> -->
+        <set name="interests" table="EMPLOYEEINTERESTS" cascade="all" lazy="false">
+            <key>
+                <column name="EMPID" />
+            </key>
+            <many-to-many class="com.ram.sai.model.Interests" column="INTERESTID"/>
+        </set>
+        <set name="skills" table="EMPSKILLS" cascade="all" lazy="false">
+            <key>
+                <column name="EMPID" />
+            </key>
+            <many-to-many class="com.ram.sai.model.Skills" column="SKILLID" />
+        </set>
+    </class>
+</hibernate-mapping>
