@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-4.0.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<!-- <context:annotation-config /> -->
+	<!-- Definition for profile bean -->
+<!-- 	<bean id="profile" class="com.tutorialspoint.Profile">
+	</bean>
+
+	<bean id="textEditor" class="com.tutorialspoint.TextEditor"/>
+
+	<bean id="spellChecker" class="com.tutorialspoint.SpellChecker"
+		/>
+	<bean id="springFirst" class="com.sai.springframework.SpringFirst"
+		autowire="byType">
+		<property name="myList">
+			<list>
+				<value>Iam</value>
+				<value>ours</value>
+				<value>Iam</value>
+				<value>we</value>
+			</list>
+		</property>
+		<property name="mySet">
+			<set>
+				<value>Disco</value>
+				<value>Dance</value>
+				<value>Disco</value>
+				<value>Style</value>
+			</set>
+		</property>
+		<property name="myMap">
+			<map>
+				<entry key="firstName" value="Vamshi" />
+				<entry key="secondName" value="Krishna" />
+				<entry key="surName" value="Gulapally" />
+			</map>
+		</property>
+		<property name="myProps">
+			<props>
+				<prop key="god">SaiRam</prop>
+				<prop key="jesus">Jesus</prop>
+				<prop key="devil">Satan</prop>
+			</props>
+		</property>
+		<property name="myAll">
+			<null />
+		</property>
+	</bean>
+	<bean id="springFirst1" class="com.sai.springframework.SpringFirst"
+		autowire="constructor">
+		<constructor-arg>
+			<set>
+				<value>Disco</value>
+				<value>Dance</value>
+				<value>Style</value>
+				<value>Disco</value>
+			</set>
+		</constructor-arg>
+	</bean> -->
+	<!-- <bean id="cStopEventHandler" class="com.tutorialspoint.CstopEventHandler" /> -->
+<!-- 
+	<aop:config>
+		<aop:aspect id="log" ref="logging">
+			<aop:pointcut id="selectAll"
+				expression="execution(* com.tutorialspoint.Student.getName(..))" />
+			<aop:before pointcut-ref="selectAll" method="beforeAdvice" />
+			<aop:after pointcut-ref="selectAll" method="afterAdvice" />
+			<aop:after-returning pointcut-ref="selectAll"
+				returning="retVal" method="afterReturningAdvice" />
+			<aop:after-throwing pointcut-ref="selectAll"
+				throwing="ex" method="AfterThrowingAdvice" />
+		</aop:aspect>
+	</aop:config> -->
+
+    <aop:aspectj-autoproxy/>
+
+   <!-- Definition for student bean -->
+   <bean id="student" class="com.tutorialspoint.Student">
+      <property name="name"  value="Zara" />
+      <property name="age"  value="11"/>      
+   </bean>
+
+   <!-- Definition for logging aspect -->
+   <bean id="logging" class="com.tutorialspoint.Logging"/> 
+      
+</beans>
