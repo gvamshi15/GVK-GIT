@@ -1,0 +1,244 @@
+<html>
+<head>
+<!-- <script src="jquery-2.1.1.min.js" type="text/javascript"></script> -->
+<link
+	href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+	rel="stylesheet">
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+/* 	$("#employees").click(function(event)
+	{ */
+	$.ajax({
+		  url:"http://localhost:8280/ajax/fetch.jsp",
+		  dataType:"xml",
+		  success:function(xml)
+		  {
+			  var optionsHtml = new Array();
+			    $('empname',xml).each(function()
+					    {
+			              var label = $(this).text();
+			              optionsHtml.push( "<option value='"+ label +"'>"+label+"</option>");
+			              });
+			optionsHtml = optionsHtml.join('');
+			$('#employees').append(optionsHtml);
+			 
+		    }
+	});
+
+	//jqueryUI
+	$( "#sortable-10" ).sortable({
+        start: function (event, ui) {
+           $("span#result").html ($("span#result").html () 
+              + "<b>start</b><br>");
+        },
+        receive : function (event, ui)
+        {
+           $("span#result").html ($("span#result").html () 
+              + ", receive");
+        },
+        stop: function (event, ui) {
+           $("span#result").html ($("span#result").html () 
+              + "<b>stop</b><br>");
+        }
+     });
+     $( "#sortable-11" ).sortable({
+        connectWith : "#sortable-10, #sortable-11"
+     });
+
+     //jquery Accordion
+     $( "#accordion-1" ).accordion({
+         collapsible: true
+      });
+
+     $( "#accordion-3" ).accordion({
+         heightStyle: "content"
+      });
+      $( "#accordion-4" ).accordion({
+         heightStyle: "fill"
+      });
+
+      //autocomplete
+      var availableTutorials = [
+                                "ActionScript",
+                                "Boostrap",
+                                "C",
+                                "C++",
+                             ];
+                         $( "#automplete-1" ).autocomplete({
+                            source: availableTutorials, //source: "http://localhost:8280/ajax/fetch.jsp",
+                            autoFocus: true
+                         });
+                   
+                         $( "#datepicker-13" ).datepicker();
+                         $( "#datepicker-13" ).datepicker("show");
+
+  });
+/* });  */
+</script>
+<style>
+#accordion-1 {
+	font-size: 14px;
+}
+
+#sortable-10, #sortable-11 {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 80%;
+}
+
+#sortable-10 li, #sortable-11 li {
+	margin: 0 3px 3px 3px;
+	padding: 0.4em;
+	padding-left: 1.5em;
+	font-size: 17px;
+	height: 16px;
+}
+
+.highlight {
+	border: 1px solid #000000;
+	font-weight: bold;
+	font-size: 45px;
+	background-color: #cedc98;
+}
+
+.default {
+	background: #cedc98;
+	border: 1px solid #DDDDDD;
+	color: #333333;
+}
+
+.wrap {
+	display: table-row-group;
+}
+
+.wrap1 {
+	float: left;
+	width: 100px;
+}
+</style>
+</head>
+<body>
+
+	<form name="dummy">
+		EName: <select id="employees">
+			<option>--choose--</option>
+		</select>
+
+	</form>
+	<div class="wrap">
+		<div class="wrap1">
+			<h3>List 1</h3>
+			<ul id="sortable-10">
+				<li class="default">A</li>
+				<li class="default">B</li>
+				<li class="default">C</li>
+				<li class="default">D</li>
+			</ul>
+		</div>
+		<div class="wrap1">
+			<h3>List 2</h3>
+			<ul id="sortable-11">
+				<li class="default">a</li>
+				<li class="default">b</li>
+				<li class="default">c</li>
+				<li class="default">d</li>
+			</ul>
+		</div>
+	</div>
+	<br />
+	<hr />
+	<span id=result></span>
+
+	<br />
+	<div id="accordion-1">
+		<h3>Tab 1</h3>
+		<div>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+				do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+				enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+				ut aliquip ex ea commodo consequat.</p>
+		</div>
+		<h3>Tab 2</h3>
+		<div>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+				do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+				enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+				ut aliquip ex ea commodo consequat.</p>
+		</div>
+		<h3>Tab 3</h3>
+		<div>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+				do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+				enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+				ut aliquip ex ea commodo consequat.</p>
+
+		</div>
+	</div>
+
+<!-- 	<h3>Height style-content</h3>
+	<div style="height: 250px">
+		<div id="accordion-3">
+			<h3>Tab 1</h3>
+			<div>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+					do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				<ul>
+					<li>List item one</li>
+					<li>List item two</li>
+					<li>List item three</li>
+					<li>List item four</li>
+					<li>List item five</li>
+				</ul>
+			</div>
+			<h3>Tab 2</h3>
+			<div>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+					do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			</div>
+			<h3>Tab 3</h3>
+			<div>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+					do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			</div>
+		</div>
+	</div> -->
+	<br />
+	<br />
+<!-- 	<h3>Height style-Fill</h3>
+	<div style="height: 250px">
+		<div id="accordion-4">
+			<h3>Tab 1</h3>
+			<div>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+					do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				<ul>
+					<li>List item one</li>
+					<li>List item two</li>
+					<li>List item three</li>
+					<li>List item four</li>
+					<li>List item five</li>
+				</ul>
+			</div>
+			<h3>Tab 2</h3>
+			<div>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+					do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			</div>
+			<h3>Tab 3</h3>
+			<div>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+					do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			</div>
+		</div>
+	</div> -->
+	<div class="ui-widget">
+		<p>Type "a" or "s"</p>
+		<label for="automplete-1">Tags: </label> <input id="automplete-1">
+	</div>
+<p>Enter Date: <input type="text" id="datepicker-13"></p>
+</body>
+</html>
