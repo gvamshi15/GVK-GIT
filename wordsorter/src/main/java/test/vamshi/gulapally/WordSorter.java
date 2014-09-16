@@ -62,7 +62,7 @@ public class WordSorter {
 		// Read each line of the file and split at every space and add into collection.
 		BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
 		while ((inputLine = bufferedReader.readLine()) != null) {
-			wordsList.addAll(Arrays.asList(inputLine.split(" ")));
+			wordsList.addAll(Arrays.asList(inputLine.split("\\s+")));
 		}
 		bufferedReader.close();
 		
