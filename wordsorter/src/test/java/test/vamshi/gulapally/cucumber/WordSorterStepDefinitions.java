@@ -1,12 +1,7 @@
 package test.vamshi.gulapally.cucumber;
 
-import static org.junit.Assert.fail;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
-
-import org.junit.After;
 
 import test.vamshi.gulapally.WordSorter;
 import cucumber.api.java.en.Given;
