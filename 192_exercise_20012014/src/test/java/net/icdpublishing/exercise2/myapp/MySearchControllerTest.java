@@ -45,11 +45,6 @@ public class MySearchControllerTest {
 				new SimpleSurnameAndPostcodeQuery("Vamshi", "AAA"),
 				customers.findCustomerByEmailAddress("john.doe@192.com"));
 
-		/*
-		 * alternate way of initialising mocks manually instead of RunWith
-		 * MockitoAnnotations.initMocks(MySearchControllerTest.class);
-		 */
-
 		// Mockito.doReturn((getDummyRecords())).when(retrievalService).search(mockedSearchRequest.getQuery());
 		// above statement can be written in BDD style using BDD Mockito
 		BDDMockito.willReturn(getDummyRecords()).given(retrievalService)
@@ -92,15 +87,16 @@ public class MySearchControllerTest {
 		Assert.assertEquals(countofExclusiveBTRecords(), results.size());
 	}
 
-	@Test //(expected = ChargingException.class)
+	@Test(expected=ChargingException.class)
 	public void shouldChargeNonBTPremiumCustomers() throws ChargingException 
 	{
 		mockedSearchRequest = new SearchRequest(
 				new SimpleSurnameAndPostcodeQuery("GVK", "GVK"),
 				customers.findCustomerByEmailAddress("sally.smith@192.com"));
-
-		// Mockito.doThrow(new RuntimeException()).when(chargingService).charge("john.doe@192.com", 1);
-		// BDDMockito.willThrow(new ChargingException("Charged")).given(chargingService).charge("sally.smith@192.com", 1);
+		BDDMockito.willReturn(getDummyRecords()).given(retrievalService)
+		.search(mockedSearchRequest.getQuery());
+		//Mockito.doThrow(new ChargingException("Charged")).when(chargingService).charge("sally.smith@192.com", 1);
+		BDDMockito.willThrow(new ChargingException("Charged")).given(chargingService).charge("sally.smith@192.com", 1);
 		controller.handleRequest(mockedSearchRequest);
 	}
 
