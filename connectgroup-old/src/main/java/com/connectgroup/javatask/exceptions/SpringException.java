@@ -1,0 +1,31 @@
+/**
+ * 
+ */
+package com.connectgroup.javatask.exceptions;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * @author Lenovo
+ *
+ */
+public class SpringException extends RuntimeException {
+
+	private static final Logger logger = LoggerFactory
+			.getLogger(SpringException.class);
+	private static final long serialVersionUID = 1L;
+	private String exceptionMsg;
+
+	public SpringException(String exceptionMsg) {
+		this.exceptionMsg = exceptionMsg;
+	}
+
+	public String getExceptionMsg() {
+		return this.exceptionMsg;
+	}
+
+	public void setExceptionMsg(String exceptionMsg) {
+		this.exceptionMsg = exceptionMsg;
+	}
+}

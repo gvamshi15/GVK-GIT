@@ -32,11 +32,8 @@ public class OrderController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(OrderController.class);
 
-	
 	private OrderService orderService;
 	private OrderValidator orderValidator;
-	
-	//public OrderController(OrderService orderService,OrderValidator orderValidator )
 
 	/**
 	 * @param orderValidator the orderValidator to set
