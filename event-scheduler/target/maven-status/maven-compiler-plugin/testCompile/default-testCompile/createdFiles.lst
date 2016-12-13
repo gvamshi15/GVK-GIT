@@ -1,0 +1,3 @@
+com\deloitte\digital\util\FileReaderTest.class
+com\deloitte\digital\main\EventSchedulerMainApplicationTest.class
+com\deloitte\digital\scheduler\ActivitySchedulerTest.class
